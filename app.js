@@ -13,7 +13,10 @@ var finaceControler = (function(){
 var appControler=(function(uiControler, finaceControler){
     var add__btn = function(){
         // Өгөгдлөө олж авна.
-
+        var text = document.querySelector('.add__description').value;
+        var number = document.querySelector('.add__value').value;
+        var addOrRemove =document.querySelector('.add__type').value;
+        console.log(addOrRemove);
         // олсон өгөгдлөө finace controler луу дамжуулна.
 
         // Нийт өгөгдлөө display гарган.
