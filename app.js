@@ -17,8 +17,11 @@ var finaceControler = (function(){
             zarlaga += number;
             document.querySelector('.budget__expenses--value').textContent = '- '+ zarlaga;
             // хувилах
-            document.querySelector('.budget__expenses--percentage').textContent = (100/Orlogo)*zarlaga + '%'
+            document.querySelector('.budget__expenses--percentage').textContent = Math.round((100/Orlogo)*zarlaga) + '%'
           }
+    },
+    Niit_dung_haruulah: function(){
+        document.querySelector('.budget__value').innerHTML = '+ '+ (Orlogo-zarlaga)
     }
   }
 })();
@@ -39,7 +42,7 @@ var appControler=(function(uiControler, finaceControler){
         // Нийт өгөгдлөө display гарган.
         finaceControler.add_orlogo_zarlaga(number, addOrRemove);
         // Төсвийг тооцолно.
-
+        finaceControler.Niit_dung_haruulah();
         // Эцсийн өгөгдлөө display гарган.
         //Буцаагаад хэвэндэн оруулна
         textO.value = 'Цалин';
