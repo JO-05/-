@@ -1,6 +1,17 @@
 // display controler
 var uiControler = (function(){
-
+ // Орлого div
+var inc = document.querySelector('.income__list');
+// Зарлага div
+var expenses = document.querySelector('.expenses');
+// div үүдийг нэмнэ
+return{
+      inc_exp: function(number, addOrRemove, text){
+        var html = '<div class="item clearfix" id="income-0"><div class="item__description">'+text+'</div><div class="right clearfix"><div class="item__value">+'+ number+'</div><div class="item__delete"><button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button></div></div></div>'
+        if(addOrRemove='inc') inc.insertAdjacentHTML("afterbegin", html);
+        else expenses.insertAdjacentHTML("afterbegin", html);
+      }
+}
 })();
 
 //finace controler
@@ -44,6 +55,7 @@ var appControler=(function(uiControler, finaceControler){
         // Төсвийг тооцолно.
         finaceControler.Niit_dung_haruulah();
         // Эцсийн өгөгдлөө display гарган.
+        uiControler.inc_exp(number, addOrRemove, text);
         //Буцаагаад хэвэндэн оруулна
         textO.value = 'Цалин';
         numberO.value ='0';
