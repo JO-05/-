@@ -6,11 +6,17 @@ var inc = document.querySelector('.income__list');
 var expenses = document.querySelector('.expenses');
 // div үүдийг нэмнэ
 return{
+      // Hevlen
       inc_exp: function(number, addOrRemove, text){
         var html = '<div class="item clearfix" id="income-0"><div class="item__description">'+text+'</div><div class="right clearfix"><div class="item__value">+'+ number+'</div><div class="item__delete"><button class="item__delete--btn"><i class="ion-ios-close-outline"></i></button></div></div></div>'
         if(addOrRemove='inc') inc.insertAdjacentHTML("afterbegin", html);
         else expenses.insertAdjacentHTML("afterbegin", html);
-      }
+      },
+      // huvisagch
+     textO : document.querySelector('.add__description'),
+     addOrRemoveO : document.querySelector('.add__type'),
+     numberO : document.querySelector('.add__value')
+
 }
 })();
 
@@ -41,26 +47,24 @@ var finaceControler = (function(){
 //it's add all controler
 var appControler=(function(uiControler, finaceControler){
     var add__btn = function(){
-        // Өгөгдлөө олж авна.
-        var textO = document.querySelector('.add__description');
-        var text = textO.value
-        var numberO = document.querySelector('.add__value');
-        var number = numberO.value;
-        var addOrRemoveO =document.querySelector('.add__type');
-        var addOrRemove = addOrRemoveO.value;
-        // олсон өгөгдлөө finace controler луу дамжуулна.
+        // Өгөгдлөө uiControler -оос олж авна.
+        var text = uiControler.textO.value
+        var number = uiControler.numberO.value;
+        var addOrRemove = uiControler.addOrRemoveO.value;
+        // TEXT => NUMBER
         number=Number(number);
-        // Нийт өгөгдлөө display гарган.
+        // Нийт өгөгдлөө display гарган. , олсон өгөгдлөө finace controler луу дамжуулна.
         finaceControler.add_orlogo_zarlaga(number, addOrRemove);
         // Төсвийг тооцолно.
         finaceControler.Niit_dung_haruulah();
         // Эцсийн өгөгдлөө display гарган.
         uiControler.inc_exp(number, addOrRemove, text);
         //Буцаагаад хэвэндэн оруулна
-        textO.value = 'Цалин';
-        numberO.value ='0';
-        addOrRemoveO.value = 'inc';
+        uiControler.textO.value = 'Цалин';
+        uiControler.numberO.value ='0';
+        uiControler.addOrRemoveO.value = 'inc';
     }
+    // Tovchin deer darah uyd ajilan
     document.querySelector('.add__btn').addEventListener('click', function(){
         add__btn();
     })
